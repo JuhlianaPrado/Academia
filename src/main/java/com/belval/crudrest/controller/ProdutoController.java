@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,6 +52,7 @@ public class ProdutoController {
 				.body(produto);
 	}
 	
+	//curl GET http://localhost:8080/produtos/1
 	@GetMapping("/produtos/{id}")
 	public ResponseEntity<Object> buscarProdutoPorId(@PathVariable Integer id) {
 		
@@ -86,5 +88,26 @@ public class ProdutoController {
 				.body("Produto apagado com sucesso!");	
 	}
 	
+	//curl PUT http://localhost:8080/produtos/1 -H "Content-Type: application/json; Charset=utf-8" -d @produto-mortadela2.json
+	@PutMapping("/produtos/{id}")
+	public ResponseEntity<Object> atualizarProduto(
+			@PathVariable(value = "id")Integer id,
+			@RequestBody Produto produto) {
+		
+		Optional<Produto> produtoEncontrado = repository.findById(id);
+		
+		if (produtoEncontrado.isEmpty()) {
+			return ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.body("Produto não encontrado.");
+		}
+		
+		produto.setId(id);
+		repository.save(produto);
+		
+		return ResponseEntity
+				.status(HttpStatus.OK)
+				.body("Produto atualizado com sucesso.");
+	}
 	
 }
