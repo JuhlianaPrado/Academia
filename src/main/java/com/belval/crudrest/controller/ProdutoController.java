@@ -69,6 +69,7 @@ public class ProdutoController {
 				.body(produto.get());
 	}
 	
+	//curl -X DELETE http://localhost:8080/produtos/1
 	@DeleteMapping("/produtos/{id}")
 	public ResponseEntity<Object> apagar(@PathVariable Integer id) {
 		
