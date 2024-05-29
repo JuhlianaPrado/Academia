@@ -89,7 +89,8 @@ public class ProdutoController {
 				.body("Produto apagado com sucesso!");	
 	}
 	
-	//curl PUT http://localhost:8080/produtos/1 -H "Content-Type: application/json; Charset=utf-8" -d @produto-mortadela2.json
+	//Observação: para métodos que não sejam o GET e o POST é necessário colocar o -X(menos xis maiúsculo)
+	//curl -X PUT http://localhost:8080/produtos/1 -H "Content-Type: application/json; Charset=utf-8" -d @produto-mortadela2.json
 	@PutMapping("/produtos/{id}")
 	public ResponseEntity<Object> atualizarProduto(
 			@PathVariable(value = "id")Integer id,
