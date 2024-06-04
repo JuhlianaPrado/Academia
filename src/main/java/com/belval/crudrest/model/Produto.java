@@ -2,20 +2,30 @@ package com.belval.crudrest.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "TB_PRODUTO")
 public class Produto {
 	
 	//Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_produto") 
 	private Integer id;
+	
+	@Column(name = "nm_produto")
 	private String nome;
+	
+	@Column(name = "ds_produto")
 	private String descricao;
+	
+	@Column(name = "preco_produto")
 	private double preco;
 	
 	//Método construtor padrão, isto é, sem parâmetros
