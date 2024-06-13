@@ -18,7 +18,7 @@ public class Cliente {
 	private String nome;
 	
 	@OneToMany
-	private List<Compra> compras;
+	private List<Plano> Planos;
 	
 	public Cliente() {
 		super();
@@ -40,12 +40,12 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public List<Compra> getCompras() {
-		return compras;
+	public List<Plano> getPlanos() {
+		return Planos;
 	}
 
-	public void setCompras(List<Compra> compras) {
-		this.compras = compras;
+	public void setPlanos(List<Plano> Planos) {
+		this.Planos = Planos;
 	}
 
 	@Override

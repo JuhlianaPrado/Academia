@@ -10,33 +10,33 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_PRODUTO")
-public class Produto {
+@Table(name = "Plano")
+public class Plano {
 	
 	//Atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_produto") 
+	@Column(name = "id_Plano") 
 	private Integer id;
 	
-	@Column(name = "nm_produto")
-	private String nome;
+	@Column(name = "Plano")
+	private String Plano;
 	
-	@Column(name = "ds_produto")
+	@Column(name = "desc_Plano")
 	private String descricao;
 	
-	@Column(name = "preco_produto")
+	@Column(name = "preco")
 	private double preco;
 	
 	//Método construtor padrão, isto é, sem parâmetros
-	public Produto() {
+	public Plano() {
 		
 	}
 
 	//Alt + SHIFT + S > Generate contructor using Fields
-	public Produto(Integer id, String nome, String descricao, double preco) {
+	public Plano(Integer id, String Plano, String descricao, double preco) {
 		this.id = id;
-		this.nome = nome;
+		this.Plano = Plano;
 		this.descricao = descricao;
 		this.preco = preco;
 	}
@@ -49,12 +49,12 @@ public class Produto {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getPlano() {
+		return Plano;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setPlano(String Plano) {
+		this.Plano = Plano;
 	}
 
 	public String getDescricao() {
@@ -75,7 +75,7 @@ public class Produto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(descricao, id, nome, preco);
+		return Objects.hash(descricao, id, Plano, preco);
 	}
 
 	@Override
@@ -86,15 +86,15 @@ public class Produto {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Produto other = (Produto) obj;
+		Plano other = (Plano) obj;
 		return Objects.equals(descricao, other.descricao) && Objects.equals(id, other.id)
-				&& Objects.equals(nome, other.nome)
+				&& Objects.equals(Plano, other.Plano)
 				&& Double.doubleToLongBits(preco) == Double.doubleToLongBits(other.preco);
 	}
 
 	@Override
 	public String toString() {
-		return "Produto [id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", preco=" + preco + "]";
+		return "Plano [id=" + id + ", Plano=" + Plano + ", descricao=" + descricao + ", preco=" + preco + "]";
 	}
 
 	
